@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>This is sub2 window</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div class="container">
+      this is sub window
+      <div class="editor">
+        <textarea id="chat_edit" autofocus="true" placeholder="# Write something here..."></textarea>
+      </div>
+      <div class="preview"></div>
+    </div>
+  </main>
+  <script type="text/javascript">
+    let SubWindow = require('../out/SubWindow').SubWindow;
+    let subWindow = new SubWindow();
+    subWindow.initComponents();
+    console.log('Left', subWindow.Left);
+    console.log('Width', subWindow.Width);
+    console.log('Height', subWindow.Height);
+
+  </script>
+</body>
+</html>
