@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Our cool editor</title>
+  <link rel="stylesheet" href="../node_modules/jquery.fancytree/dist/skin-win8-n/ui.fancytree.css">
+</head>
+<body>
+  <main>
+    <div class="container">
+      <div id="tree" name="selNodes"></div>
+      
+    </div>
+  </main>
+  <script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');</script>
+  <script type="text/javascript">
+    //window.jQuery = window.$ = require('jquery');
+    
+  </script>
+  <script src="../scripts/res/jquery-ui.min.js"></script>
+  <script src="../node_modules/jquery.fancytree/dist/jquery.fancytree-all.min.js"></script>
+
+  <script>
+    let MainWindow = require('../out/MainWindow').MainWindow;
+    let mainWindow = new MainWindow();
+    mainWindow.initComponents();
+
+    
+  </script>
+</body>
+</html>
