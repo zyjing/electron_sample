@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Our cool editor</title>
+  
+  <link rel="stylesheet" href="../resources/bootstrap.css">
+  <link rel="stylesheet" href="../resources/bootstrap-theme.css">
+  <link rel="stylesheet" href="../node_modules/jquery.fancytree/dist/skin-win8-n/ui.fancytree.css">
+</head>
+
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-12">
+        <div id="toolbar"></div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3" >
+      
+      <div id="searchbar"></div>
+      <div>Folders
+        <div id="tree"></div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="top_panel"> 
+            <div id="file_properties" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="bottom_panel"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+    
+
+<script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');</script>
+<script type="text/javascript">
+  //window.jQuery = window.$ = require('jquery');
+  
+</script>
+<script src="../scripts/res/jquery-ui.min.js"></script>
+<script src="../scripts/res/bootstrap.js"></script>
+<script src="../node_modules/jquery.fancytree/dist/jquery.fancytree-all.min.js"></script>
+
+
+
+<script>
+  require('../out/tsx/FileProperty');
+
+  let MainWindow = require('../out/MainWindow').MainWindow;
+  let mainWindow = new MainWindow();
+  mainWindow.initComponents();
+
+  
+</script>
+
+</html>

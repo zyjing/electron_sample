@@ -1,0 +1,33 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "node/node.d.ts": {
+      "commit": "36d40a63a05b5cb3413737fbdf7c9a2a26f211fd"
+    },
+    "github-electron/github-electron.d.ts": {
+      "commit": "36d40a63a05b5cb3413737fbdf7c9a2a26f211fd"
+    },
+    "jquery.fancytree/jquery.fancytree.d.ts": {
+      "commit": "012b7f1072c1e9bd5d0b309b4d194a014a02ed5f"
+    },
+    "jqueryui/jqueryui.d.ts": {
+      "commit": "012b7f1072c1e9bd5d0b309b4d194a014a02ed5f"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "012b7f1072c1e9bd5d0b309b4d194a014a02ed5f"
+    },
+    "mocha/mocha.d.ts": {
+      "commit": "012b7f1072c1e9bd5d0b309b4d194a014a02ed5f"
+    },
+    "react/react.d.ts": {
+      "commit": "3518ba75e124a9afae1f18df34043e4a982047eb"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "3518ba75e124a9afae1f18df34043e4a982047eb"
+    }
+  }
+}
