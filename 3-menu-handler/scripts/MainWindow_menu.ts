@@ -9,7 +9,11 @@ export class MainWindowCommands {
 
 export class MainWindowMenu extends BaseMenu {
 
-    _template: Electron.MenuItemOptions[] = [{
+    //menu instance should be created from initComponents of BaseWindow
+    constructor() {
+        super();
+
+        this._template = [{
         label: 'Electron',
         submenu: [ {
                     label: 'Prefs',
@@ -29,12 +33,8 @@ export class MainWindowMenu extends BaseMenu {
                 }
             ]
         },
-        ]
-
-
-    //menu instance should be created from initComponents of BaseWindow
-    constructor() {
-        super();
+        ];
+        this.initMenu();
     }
 }
     

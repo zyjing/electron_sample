@@ -29,8 +29,9 @@ export class BaseMenu extends EventEmitter implements IBaseMenu{
 
     constructor() {
         super();
-        this.initMenu();
     }
+
+
 
 }
 
