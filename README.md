@@ -15,3 +15,8 @@ Shows how to communicate between 2 windows, without the mid-man of main process
 5-tree-control
 Tree control that display folder structure.
 
+6-tree-explorer
+Tree explorer that display folder structure, and show file properties
+
+7-file-explorer
+File explorer that display folder structure, and show file properties
