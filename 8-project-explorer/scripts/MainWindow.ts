@@ -8,7 +8,9 @@ import {projectStore} from './project_store'
 import {fileStore} from './file_store'
 import {MainWindowCommands, MainWindowMenu} from './MainWindow_menu'
 
-
+interface NodeData {
+    filePath: string;
+}
 export class MainWindow extends BaseWindow {
 
     get pageFile(): string {
@@ -23,7 +25,22 @@ export class MainWindow extends BaseWindow {
         
         let fancytree = $("#tree").fancytree("getTree");
         fancytree.clear();
-        this.readFolder(folderPath, fancytree.getRootNode());
+        let rootNode = fancytree.getRootNode();
+        this.readFolder(folderPath).sort((a, b) => (a.folder?0: 1) - (b.folder?0: 1)).map(childData=> {
+                
+                let child: Fancytree.FancytreeNode = rootNode.addChildren([childData]);
+
+                // if (child.title == 'tsx') {
+                //     console.log('found tsx');
+                //     child.lazy = true;
+                //     child.resetLazy();
+                //     return;
+                // }
+
+                // if (childData.folder) {
+                //     this.readFolder(childData.data.filePath, child);
+                // }
+            });
 
     }
 
@@ -70,26 +87,36 @@ export class MainWindow extends BaseWindow {
         }
     }
 
-    readFolder(parentDir: string, node: Fancytree.FancytreeNode) {
+    readFolder(parentDir: string) {
         let files = fs.readdirSync(parentDir);
 
-        files.map(file => {
+        let data = files.map(file => {
                 let filePath = path.join(parentDir, file);
 
                 let isDirectory: boolean = fs.statSync(filePath).isDirectory();
 
-                let childData: Fancytree.NodeData = {title: file, key: file, data: {filePath: filePath}};
+                let isLazy = (isDirectory && !this.isEmptyFolder(filePath) && !this.shouldInclude(file));
+                let shouldExpanded = (isDirectory && !isLazy)
 
+                let childData: Fancytree.NodeData = {title: file, key: file, lazy: isLazy, expanded: shouldExpanded, data: {filePath: filePath}};
                 childData.folder = isDirectory;
-                return childData;
-            }).sort((a, b) => (a.folder?0: 1) - (b.folder?0: 1)).map(childData=> {
-                
-                let child: Fancytree.FancytreeNode = node.addChildren([childData]);
 
-                if (childData.folder) {
-                    this.readFolder(childData.data.filePath, child);
+                if (shouldExpanded) {
+                    childData.children = this.readFolder(filePath);
                 }
-            })
+                return childData;
+            });
+            console.error('readFolder', data);
+            return data;
+    }
+
+    isEmptyFolder(folder: string): boolean {
+        let files = fs.readdirSync(folder);
+        return (files.length == 0); 
+    }
+
+    shouldInclude(folder: string) {
+        if (folder == 'res') return true;
     }
     
     initTree(dir?: string) {
@@ -99,8 +126,6 @@ export class MainWindow extends BaseWindow {
 
         let baseDir:string = path.join(rootDir, './');
 
-        $(function(){
- 
         $("#tree").fancytree({
             extensions: ["edit"],
           checkbox: true,
@@ -113,6 +138,11 @@ export class MainWindow extends BaseWindow {
             fileStore.setFilePath(filePath);
             return true;
           },
+          lazyLoad: (event, data) => {
+              let node = data.node;
+              let metaData: NodeData = node.data as NodeData;
+              data.result = this.readFolder(metaData.filePath);
+          },
           source:[
           ]
         });
@@ -120,7 +150,6 @@ export class MainWindow extends BaseWindow {
         self._fancytree = $("#tree").fancytree("getTree");
         projectStore.setFolderPath(baseDir);
         
-    });
 
     }
 
