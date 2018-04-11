@@ -72,6 +72,7 @@ export class MainWindow extends BaseWindow {
             }).on(MainWindowCommands.about, () => {
 
             });
+            this._menu.initMenu();
 
             projectStore.addChangeListener(this.onFolderChange.bind(this));
 

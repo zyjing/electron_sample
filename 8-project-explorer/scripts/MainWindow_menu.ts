@@ -16,7 +16,9 @@ export class MainWindowMenu extends BaseMenu {
                     click: () => {
                         this.emit(MainWindowCommands.perfs);
                     }
-                }
+                },  
+                { label: 'Zoom In', accelerator: 'CmdOrCtrl+=', role: 'zoomin' },
+                { label: 'Zoom Out', accelerator: 'CmdOrCtrl+-', role: 'zoomout' }
             ]
         },
         {
