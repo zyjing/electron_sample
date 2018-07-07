@@ -4,7 +4,7 @@ let Menu: typeof Electron.Menu = remote.Menu;
 let ipc = remote.ipcMain;
 
 
-let template: Electron.MenuItemOptions = {
+let template: Electron.MenuItemConstructorOptions = {
     label: 'Electron',
     submenu: [
         {

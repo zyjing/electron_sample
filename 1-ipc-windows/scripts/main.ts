@@ -41,15 +41,15 @@ ipc.on('to-sub', function(data:any) {
     if (data.event == 'message') {
         console.log('forwarding to sub');
         
-        subWindow.send('message', data.payload)
+        (subWindow as any).send('message', data.payload)
     }
 });
 
 ipc.on('to-main', function(data:any) {
     console.log('to-main', data)
     if (data.event == 'message') {
-        console.log('forwarding to main')
-        mainWindow.send('message', data.payload)
+        console.log('forwarding to main');
+        (mainWindow as any).send('message', data.payload)
     }
 });
 
