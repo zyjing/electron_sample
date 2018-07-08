@@ -42,7 +42,7 @@ export class SubWindow extends BaseWindow {
             let chat_edit:HTMLTextAreaElement = <HTMLTextAreaElement> document.getElementById('chat_edit');
 
             console.log(chat_edit.value);
-            this.parentWindow.send('message', chat_edit.value);
+            (this.parentWindow as any).send('message', chat_edit.value);
         })
 
         ipcRenderer.on('message', function(event, data) {

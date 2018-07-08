@@ -12,13 +12,13 @@ export class NotImplementedException extends Error {
 
 
 export interface IBaseMenu {
-    _template: Electron.MenuItemOptions[];
+    _template: Electron.MenuItemConstructorOptions[];
     initMenu();
 }
 
 export class BaseMenu extends EventEmitter implements IBaseMenu{
 
-    _template: Electron.MenuItemOptions[];
+    _template: Electron.MenuItemConstructorOptions[];
 
     initMenu() {
         if (this._template != null) {
@@ -72,7 +72,7 @@ export class BaseWindow {
             
             this._browserWindow = BaseWindow.CreateWindow(options);
 
-            this._browserWindow.loadURL(path.join(__dirname, this._baseFormPath, this.pageFile));
+            this._browserWindow.loadURL('file://' + path.join(__dirname, this._baseFormPath, this.pageFile));
         }
         else {
             if (remote) {

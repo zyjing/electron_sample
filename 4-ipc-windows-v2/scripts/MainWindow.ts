@@ -36,7 +36,7 @@ export class MainWindow extends BaseWindow {
 
             console.log(chat_edit.value);
 
-            this.subWindow.browserWindow.send('message', chat_edit.value);
+            (this.subWindow.browserWindow as any).send('message', chat_edit.value);
 
         })
     }

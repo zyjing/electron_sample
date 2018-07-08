@@ -9,7 +9,7 @@ export class MainWindowCommands {
 
 export class MainWindowMenu extends BaseMenu {
 
-    _template: Electron.MenuItemOptions[] = [{
+    _template: Electron.MenuItemConstructorOptions[] = [{
         label: 'Electron',
         submenu: [ {
                     label: 'Prefs',
